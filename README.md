@@ -1,9 +1,4 @@
 # AWS_Training
-Here is the documentation in a `README.md` format to make it more structured and visually appealing:
-
-```markdown
-# Point of Action (PoA) - Creating an AWS Lambda Function Using CloudFormation
-
 ## Summary
 1. **Create the CloudFormation template** with the necessary Lambda function and IAM role definitions.
 2. **Package the Lambda function code** into a ZIP file and upload it to an S3 bucket.
