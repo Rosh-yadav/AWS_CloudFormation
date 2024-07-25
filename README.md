@@ -17,44 +17,7 @@ To create an AWS Lambda function using CloudFormation and deploy it with an S3 b
 ## Steps to Create an AWS Lambda Function Using CloudFormation
 
 ### 1. Write the CloudFormation Template
-Create a CloudFormation template to define your Lambda function and any necessary resources. Below is a sample template:
-
-```yaml
-AWSTemplateFormatVersion: '2010-09-09'
-Resources:
-  MyLambdaExecutionRole:
-    Type: 'AWS::IAM::Role'
-    Properties:
-      AssumeRolePolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-          - Effect: 'Allow'
-            Principal:
-              Service: 'lambda.amazonaws.com'
-            Action: 'sts:AssumeRole'
-      Policies:
-        - PolicyName: 'LambdaExecutionPolicy'
-          PolicyDocument:
-            Version: '2012-10-17'
-            Statement:
-              - Effect: 'Allow'
-                Action:
-                  - 'logs:CreateLogGroup'
-                  - 'logs:CreateLogStream'
-                  - 'logs:PutLogEvents'
-                Resource: '*'
-  MyLambdaFunction:
-    Type: 'AWS::Lambda::Function'
-    Properties:
-      Handler: 'index.handler'
-      Role: !GetAtt MyLambdaExecutionRole.Arn
-      Code:
-        S3Bucket: 'my-bucket'
-        S3Key: 'my-function.zip'
-      Runtime: 'nodejs14.x'
-      FunctionName: 'MySampleLambdaFunction'
-      Timeout: 30
-```
+Create a CloudFormation template to define your Lambda function and any necessary resources. code is given in file 
 
 ### 2. Package Lambda Code
 - Zip the function code file.
@@ -96,8 +59,3 @@ Resources:
 
 ---
 
-## Additional Information
-For more detailed instructions, please visit the [AWS Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/GettingStarted.html).
-```
-
-You can save this content in a `README.md` file and share it with your team on GitHub or other platforms. This format ensures the document is well-structured and easy to follow.
