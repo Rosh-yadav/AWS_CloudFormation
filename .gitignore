@@ -1,0 +1,10 @@
+# Ignore Python bytecode files
+*.pyc
+__pycache__/
+
+# Ignore zip files
+*.zip
+
+# Ignore other temporary or IDE-specific files
+.DS_Store
+*.log
