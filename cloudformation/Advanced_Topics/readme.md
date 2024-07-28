@@ -1,6 +1,6 @@
-[Nested Stacks](./04_Advanced_Topics/01_Nested_Stacks.md)
-   - [Custom Resources](./04_Advanced_Topics/02_Custom_Resources.md)
-   - [Cross Stack References](./04_Advanced_Topics/03_Cross_Stack_References.md)
-   - [Change Sets](./04_Advanced_Topics/04_Change_Sets.md)
-   - [Stack Policies](./04_Advanced_Topics/05_Stack_Policies.md)
-   - [Examples](./04_Advanced_Topics/examples/advanced_topics.yaml)
+## [Nested Stacks]
+   - **[Custom Resources]**
+   - **[Cross Stack References]**
+   - **[Change Sets]**
+   - **[Stack Policies]**
+   -**[Examples]**
