@@ -1,0 +1,8 @@
+ - [Ref](./03_Intrinsic_Functions/01_Ref.md)
+   - [GetAtt](./03_Intrinsic_Functions/02_GetAtt.md)
+   - [Join](./03_Intrinsic_Functions/03_Join.md)
+   - [Sub](./03_Intrinsic_Functions/04_Sub.md)
+   - [FindInMap](./03_Intrinsic_Functions/05_FindInMap.md)
+   - [If](./03_Intrinsic_Functions/06_If.md)
+   - [Condition Functions](./03_Intrinsic_Functions/07_Condition_Functions.md)
+   - [Examples](./03_Intrinsic_Functions/examples/intrinsic_functions.yaml)

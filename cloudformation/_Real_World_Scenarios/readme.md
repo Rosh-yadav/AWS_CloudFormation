@@ -1,0 +1,5 @@
+- [Multi Region Deployments](./05_Real_World_Scenarios/01_Multi_Region_Deployments.md)
+   - [CI/CD Integration](./05_Real_World_Scenarios/02_CI_CD_Integration.md)
+   - [Security Best Practices](./05_Real_World_Scenarios/03_Security_Best_Practices.md)
+   - [Cost Management](./05_Real_World_Scenarios/04_Cost_Management.md)
+   - [Examples](./05_Real_World_Scenarios/examples/real_world_scenarios.yaml)

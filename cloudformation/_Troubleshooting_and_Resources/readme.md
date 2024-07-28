@@ -1,0 +1,5 @@
+- [Common Errors](./06_Troubleshooting_and_Resources/01_Common_Errors.md)
+   - [Stack Events](./06_Troubleshooting_and_Resources/02_Stack_Events.md)
+   - [Best Practices](./06_Troubleshooting_and_Resources/03_Best_Practices.md)
+   - [Useful Links](./06_Troubleshooting_and_Resources/04_Useful_Links.md)
+   - [Examples](./06_Troubleshooting_and_Resources/examples/troubleshooting_resources.yaml)

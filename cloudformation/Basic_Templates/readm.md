@@ -1,0 +1,7 @@
+ - [Template Structure](./02_Basic_Templates/01_Template_Structure.md)
+   - [Parameters](./02_Basic_Templates/02_Parameters.md)
+   - [Mappings](./02_Basic_Templates/03_Mappings.md)
+   - [Conditions](./02_Basic_Templates/04_Conditions.md)
+   - [Resources](./02_Basic_Templates/05_Resources.md)
+   - [Outputs](./02_Basic_Templates/06_Outputs.md)
+   - [Examples](./02_Basic_Templates/examples/basic_template.yaml)
