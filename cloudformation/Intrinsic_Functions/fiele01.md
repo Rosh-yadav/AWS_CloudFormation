@@ -150,9 +150,15 @@ Outputs:
 
 ## Key Points
 **Ref:** Get the value of a parameter or resource.
+
 **GetAtt:** Get an attribute value of a resource.
+
 **Join:** Concatenate values into a single string.
+
 **Sub:** Substitute variables in a string.
+
 **FindInMap:** Get values from a mapping.
+
 **If:** Create or modify resources based on conditions.
+
 **Condition Functions:** Logical functions for complex conditions.
