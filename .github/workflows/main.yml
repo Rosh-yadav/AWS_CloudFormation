@@ -13,6 +13,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: List files in the repository
+        run: ls -R
+
       - name: Set up AWS CLI
         run: |
           sudo apt-get update
@@ -21,9 +24,9 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4.0.2
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}     # Fetch AWS Access Key ID from GitHub secrets
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # Fetch AWS Secret Access Key from GitHub secrets
-          aws-region: ${{ secrets.AWS_REGION }}                     # Fetch AWS Region from GitHub secrets
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Validate CloudFormation template
         run: aws cloudformation validate-template --template-body file://cloudformation_Real_World_Scenarios/case02/template.yaml
