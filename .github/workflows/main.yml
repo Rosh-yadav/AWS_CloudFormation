@@ -35,6 +35,7 @@ jobs:
         run: |
           STACK_NAME=my-cloudformation-stack
           TEMPLATE_FILE=template.yaml
+          BUCKET_NAME=roshsecond # Provide a unique name for your S3 bucket
 
           # Check if stack exists
           if aws cloudformation describe-stacks --stack-name $STACK_NAME; then
