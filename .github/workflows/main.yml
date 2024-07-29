@@ -1,0 +1,41 @@
+name: Deploy CloudFormation Stack
+
+# Trigger the workflow on push to the main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up AWS CLI
+        uses: aws-actions/setup-cli@v2
+        with:
+          region: ${{ secrets.AWS_REGION }}
+          access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Validate CloudFormation template
+        run: aws cloudformation validate-template --template-body file://template.yaml
+
+      - name: Create or update CloudFormation stack
+        run: |
+          STACK_NAME=MyCloudFormationStack
+          TEMPLATE_FILE=template.yaml
+
+          # Check if stack exists
+          if aws cloudformation describe-stacks --stack-name $STACK_NAME; then
+            echo "Updating stack..."
+            aws cloudformation update-stack --stack-name $STACK_NAME --template-body file://$TEMPLATE_FILE --parameters ParameterKey=BucketName,ParameterValue=my-unique-bucket-name --capabilities CAPABILITY_NAMED_IAM
+            aws cloudformation wait stack-update-complete --stack-name $STACK_NAME
+          else
+            echo "Creating stack..."
+            aws cloudformation create-stack --stack-name $STACK_NAME --template-body file://$TEMPLATE_FILE --parameters ParameterKey=BucketName,ParameterValue=my-unique-bucket-name --capabilities CAPABILITY_NAMED_IAM
+            aws cloudformation wait stack-create-complete --stack-name $STACK_NAME
+          fi
