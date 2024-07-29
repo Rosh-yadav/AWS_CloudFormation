@@ -41,7 +41,7 @@ Use the AWS CLI to deploy stacks in different regions.
 
 Example commands:
 
-        aws cloudformation create-stack --stack-name MyStack --template-url https://s3.amazonaws.com/bucketmutiregion/template.yaml --region us-east-1 --parameters ParameterKey=BucketName,ParameterValue=roshbucket123
+        aws cloudformation create-stack --stack-name MyStack --template-url https://s3.amazonaws.com/bucketmutiregion/template.yaml --region us-east-1 --parameters ParameterKey=BucketName,ParameterValue=roshfirst
 
         ParameterKey: BucketName
         ParameterValue: my-unique-bucket-name (you can replace this with any name you choose)
