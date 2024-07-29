@@ -5,12 +5,16 @@ Parameters:
     Default: t2.micro
   BucketName:
     Type: String
+    Description: "The name of the S3 bucket"
+    Default: "default-bucket-name"  # Add a default value if necessary
+
 Mappings:
   RegionMap:
     us-east-1:
       AMI: ami-0ff8a91507f77f867
     us-west-1:
       AMI: ami-0bdb828fd58c52235
+
 Resources:
   MysecondVPC:
     Type: AWS::EC2::VPC
