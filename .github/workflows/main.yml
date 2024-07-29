@@ -26,12 +26,12 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}                     # Fetch AWS Region from GitHub secrets
 
       - name: Validate CloudFormation template
-        run: aws cloudformation validate-template --template-body file://template.yaml
+        run: aws cloudformation validate-template --template-body file://cloudformation_Real_World_Scenarios/case02/template.yaml
 
       - name: Deploy CloudFormation stack
         run: |
           STACK_NAME=my-cloudformation-stack
-          TEMPLATE_FILE=template.yaml
+          TEMPLATE_FILE=cloudformation_Real_World_Scenarios/case02/template.yaml
 
           # Check if stack exists
           if aws cloudformation describe-stacks --stack-name $STACK_NAME; then
