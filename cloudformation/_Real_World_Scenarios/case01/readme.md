@@ -54,30 +54,29 @@ Example commands:
 **NOTE : If you want to provide the bucket name each time you create the stack: Ensure you specify the BucketName parameter using the --parameters option in the AWS CLI or AWS Management Console.**
 
 Example commands:
-""" 
-     aws cloudformation create-stack --stack-name MyMultiRegionStack --template-url https://s3.amazonaws.com/mybucket/templates/template.yaml --region us-east-1 --parameters ParameterKey=BucketName,ParameterValue=my-unique-bucket-name-1
-   aws cloudformation create-stack --stack-name MyMultiRegionStack --template-url https://s3.amazonaws.com/mybucket/templates/template.yaml --region us-west-1 --parameters ParameterKey=BucketName,ParameterValue=my-unique-bucket-name-2
+       
+           aws cloudformation create-stack --stack-name MyMultiRegionStack --template-url https://s3.amazonaws.com/mybucket/templates/template.yaml --region us-east-1 --parameters ParameterKey=BucketName,ParameterValue=my-unique-bucket-name-1
+           
+         aws cloudformation create-stack --stack-name MyMultiRegionStack --template-url https://s3.amazonaws.com/mybucket/templates/template.yaml --region us-west-1 --parameters ParameterKey=BucketName,ParameterValue=my-unique-bucket-name-2
 
 
-"""
 
 ## 4.Verify Resource Creation
 
 Steps: Use the AWS CLI to check the status of the stacks in each region.
 
-   Commands:
-   **Check stack status in us-east-1**
-   aws cloudformation describe-stacks --stack-name MyMultiRegionStack --region us-east-1
-   
-   **Check stack status in us-west-1**
-   aws cloudformation describe-stacks --stack-name MyMultiRegionStack --region us-west-1
+      Commands:
+      Check stack status in us-east-1
+      aws cloudformation describe-stacks --stack-name MyMultiRegionStack --region us-east-1
+      
+      Check stack status in us-west-1
+      aws cloudformation describe-stacks --stack-name MyMultiRegionStack --region us-west-1
 
 
    in our case example :
    
-   ""
-     aws cloudformation describe-stacks --stack-name MyStack --region us-east-1
+        aws cloudformation describe-stacks --stack-name MyStack --region us-east-1
 
-  ""
+
 
 
