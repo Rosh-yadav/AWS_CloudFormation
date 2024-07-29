@@ -6,7 +6,7 @@ Parameters:
   BucketName:
     Type: String
     Description: "The name of the S3 bucket"
-    Default: "default-bucket-name"  # Add a default value if necessary
+    Default: "roshsecondfirstyadav"  # Add a default value if necessary
 
 Mappings:
   RegionMap:
