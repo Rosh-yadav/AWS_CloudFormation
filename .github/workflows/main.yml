@@ -1,10 +1,9 @@
 name: Deploy CloudFormation Stack
 
-# Trigger the workflow on push to the main branch
 on:
   push:
     branches:
-      - main
+      - main  # Trigger on changes to the main branch
 
 jobs:
   deploy:
@@ -12,30 +11,35 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up AWS CLI
-        uses: aws-actions/setup-cli@v2
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y awscli
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
         with:
-          region: ${{ secrets.AWS_REGION }}
-          access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Validate CloudFormation template
         run: aws cloudformation validate-template --template-body file://template.yaml
 
-      - name: Create or update CloudFormation stack
+      - name: Deploy CloudFormation stack
         run: |
-          STACK_NAME=MyCloudFormationStack
+          STACK_NAME=my-cloudformation-stack
           TEMPLATE_FILE=template.yaml
 
           # Check if stack exists
           if aws cloudformation describe-stacks --stack-name $STACK_NAME; then
             echo "Updating stack..."
-            aws cloudformation update-stack --stack-name $STACK_NAME --template-body file://$TEMPLATE_FILE --parameters ParameterKey=BucketName,ParameterValue=my-unique-bucket-name --capabilities CAPABILITY_NAMED_IAM
+            aws cloudformation update-stack --stack-name $STACK_NAME --template-body file://$TEMPLATE_FILE --capabilities CAPABILITY_NAMED_IAM
             aws cloudformation wait stack-update-complete --stack-name $STACK_NAME
           else
             echo "Creating stack..."
-            aws cloudformation create-stack --stack-name $STACK_NAME --template-body file://$TEMPLATE_FILE --parameters ParameterKey=BucketName,ParameterValue=my-unique-bucket-name --capabilities CAPABILITY_NAMED_IAM
+            aws cloudformation create-stack --stack-name $STACK_NAME --template-body file://$TEMPLATE_FILE --capabilities CAPABILITY_NAMED_IAM
             aws cloudformation wait stack-create-complete --stack-name $STACK_NAME
           fi
