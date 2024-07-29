@@ -3,7 +3,7 @@ name: Deploy CloudFormation Stack
 on:
   push:
     branches:
-      - main  # Trigger on changes to the main branch
+      - main
 
 jobs:
   deploy:
@@ -35,15 +35,15 @@ jobs:
         run: |
           STACK_NAME=my-cloudformation-stack
           TEMPLATE_FILE=template.yaml
-          BUCKET_NAME=roshsecond # Provide a unique name for your S3 bucket
+          BUCKET_NAME=roshsecond # Ensure this is a unique name and correctly provided
 
           # Check if stack exists
           if aws cloudformation describe-stacks --stack-name $STACK_NAME; then
             echo "Updating stack..."
-            aws cloudformation update-stack --stack-name $STACK_NAME --template-body file://$TEMPLATE_FILE --capabilities CAPABILITY_NAMED_IAM
+            aws cloudformation update-stack --stack-name $STACK_NAME --template-body file://$TEMPLATE_FILE --parameters ParameterKey=BucketName,ParameterValue=$BUCKET_NAME --capabilities CAPABILITY_NAMED_IAM
             aws cloudformation wait stack-update-complete --stack-name $STACK_NAME
           else
             echo "Creating stack..."
-            aws cloudformation create-stack --stack-name $STACK_NAME --template-body file://$TEMPLATE_FILE --capabilities CAPABILITY_NAMED_IAM
+            aws cloudformation create-stack --stack-name $STACK_NAME --template-body file://$TEMPLATE_FILE --parameters ParameterKey=BucketName,ParameterValue=$BUCKET_NAME --capabilities CAPABILITY_NAMED_IAM
             aws cloudformation wait stack-create-complete --stack-name $STACK_NAME
           fi
